@@ -1,23 +1,28 @@
-## Этап сборки React-приложения
-FROM node:18-alpine as build
+# Название проекта (Frontend)
 
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build
+React-приложение с Docker-контейнеризацией и Nginx для production-сборки.
 
-## Этап запуска через Nginx
-FROM nginx:alpine
+## Технологии
 
-## Копируем собранное приложение в Nginx
-COPY --from=build /app/build /usr/share/nginx/html
+- React 18+
+- TypeScript (если используется)
+- Vite / Webpack (указать ваш сборщик)
+- Docker + Docker Compose
+- Nginx (production-сервер)
+- [Дополнительные библиотеки, например: Redux, React Query, TailwindCSS и т.д.]
 
-## Копируем кастомные настройки Nginx (если нужны)
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+## Требования
 
-## Открываем порт 80
-EXPOSE 80
+- Node.js 18+
+- npm 9+ или yarn 1.22+
+- Docker 20.10.0+ (для production-сборки)
 
-## Запускаем Nginx
-CMD ["nginx", "-g", "daemon off;"]
+## Установка и запуск
+
+### Локальная разработка (без Docker)
+
+1. Установите зависимости:
+   ```bash
+   npm install
+   # или
+   yarn install
