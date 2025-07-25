@@ -1,4 +1,4 @@
-Этап сборки React-приложения
+# Этап сборки React-приложения
 FROM node:18-alpine as build
 
 WORKDIR /app
