@@ -33,12 +33,11 @@ function GameBoard() {
       }
 
       // Проверка URL бэкенда
-      const API_URL = 'https://battle-ship-ggjs.onrender.com/create_game';
-      if (!API_URL.startsWith('http')) {
-        console.error('Неверный URL API:', API_URL);
-        alert('Внутренняя ошибка: неправильные настройки сервера');
+     const API_URL = '/api/create_game';
+     if (!API_URL) {  // Проверяем только на пустоту
+        alert('Ошибка: URL API не может быть пустым!');
         return;
-      }
+     }
 
       try {
         // Старт загрузки
@@ -138,8 +137,8 @@ function GameBoard() {
       return;
     }
 
-    try {
-      const response = await fetch(`https://battle-ship-ggjs.onrender.com/join_game?_=${Date.now()}`, {
+   try {
+      const response = await fetch(`/api/join_game?_=${Date.now()}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ game_id: gameId }),
@@ -179,7 +178,7 @@ function GameBoard() {
     const ships = groupShips();
 
     try {
-      const res = await fetch('https://battle-ship-ggjs.onrender.com/set_ships', {
+      const res = await fetch(`/api/set_ships`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ game_id: gameId, player_id: playerId, ships }),
@@ -211,7 +210,7 @@ function GameBoard() {
         console.log('Отправка выстрела:', { x, y, gameId, playerId });
 
         // 2. Отправка запроса
-        const response = await fetch('https://battle-ship-ggjs.onrender.com/shoot', {
+        const response = await fetch(`/api/shoot`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

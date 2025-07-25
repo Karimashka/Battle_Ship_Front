@@ -1,0 +1,41 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+й.py
+LoginPage.jsx
+AuthContext.jsx
+App.css
+Navbar.jsx
+PrivateRoute.jsx
+front.html
+.idea
+__pycashe__
+
+# Virtual environments
+venv/
+.venv/
+env/
+*.log
+
+# IDE
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets & local config
+.env
+*.sqlite3
+
+# Node / npm
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Build artifacts
+dist/
+build/
