@@ -16,8 +16,8 @@ COPY --from=build /app/build /usr/share/nginx/html
 # Копируем кастомные настройки Nginx (если нужны)
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Открываем порт 3000
-EXPOSE 3000
+# Открываем порт 80
+EXPOSE 80
 
 # Запускаем Nginx
 CMD ["nginx", "-g", "daemon off;"]
